@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod-shell
+spec:
+  containers:
+  - name: busy
+    image: busybox:latest
+    env:
+    - name: OS
+      value: "ubuntu"
+    - name: DEBUG
+      value: "true"
+    command: ["/bin/sh", "-c"]
+    args: ["echo $(OS), $(DEBUG) && sleep 10m"]

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: demo
+  name: mypod
+  labels:
+     app: demo-pod
+     environment: dev
+spec:
+  containers:
+  - name: busy
+    image: busybox:latest
+    env:
+    - name: OS
+      value: "ubuntu"
+    - name: DEBUG
+      value: "true"
+    command: ["echo"]
+    args: ["$(OS), $(DEBUG)"]
+    resources:
+      limits:
+        memory: "500Mi"
+        cpu: "0.6"
+      requests:
+        memory: "200Mi"
+        cpu: "0.2"
