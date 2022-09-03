@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myweb
+  namespace: project01
+  labels:
+    app: echoweb
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: echoweb
+  template:
+    metadata:
+      labels:
+        app: echoweb
+    spec:
+      containers:
+      - name: myecho
+        image: nginx
+        ports:
+        - containerPort: 8080
